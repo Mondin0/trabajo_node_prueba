@@ -15,10 +15,11 @@ router.post('/', (req, res) =>{
     const { name, lastname, email, phone } = req.body;
     if ( name && lastname && email && phone) {
         const id = Object.keys(usuarios).length + 1;
-        const nuevoUsuario= {...req.body, id};
+        const json_id = JSON.stringify(id);
+        const nuevoUsuario= {...req.body, json_id};
         usuarios.push(nuevoUsuario); 
-        res.json(usuarios);
         const json_usuarios= JSON.stringify(usuarios)
+        res.json(json_usuarios);
         fs.writeFileSync('./src/sample.json', json_usuarios ,'utf-8')
     } else {
         res.status(500).json({error: "There was an eror"});
