@@ -11,6 +11,15 @@ router.get('/', (req, res)=>{
     res.json(usuarios);
 });
 
+router.get('/:json_id', (req,res) =>{
+    const { json_id } = req.params;
+    _.each(usuarios, (usuario, i)=>{
+        if (usuario.json_id==json_id){
+            res.json(usuario);
+        }
+    })
+})
+
 router.post('/', (req, res) =>{
     const { name, lastname, email, phone } = req.body;
     if ( name && lastname && email && phone) {
@@ -27,12 +36,12 @@ router.post('/', (req, res) =>{
     
 });
 
-router.put('/:id', (req, res)=>{
-    const { id } = req.params;
+router.put('/:json_id', (req, res)=>{
+    const { json_id } = req.params;
     const { name, lastname, email, phone } = req.body;
     if ( name && lastname && email && phone) {
         _.each(usuarios, (usuario, i)=>{
-            if(usuario.id== id){
+            if(usuario.json_id== json_id){
                 usuario.name= name;
                 usuario.lastname= lastname;
                 usuario.email=email;
@@ -48,10 +57,10 @@ router.put('/:id', (req, res)=>{
 
 })
 
-router.delete('/:id', (req,res)=>{
-    const { id } = req.params;
+router.delete('/:json_id', (req,res)=>{
+    const { json_id } = req.params;
     _.each(usuarios, (usuario, i)=>{
-        if(usuario.id == id){
+        if(usuario.json_id == json_id){
             usuarios.splice(i, 1);
             const json_usuarios= JSON.stringify(usuarios);
             fs.writeFileSync('./src/sample.json', json_usuarios ,'utf-8');
