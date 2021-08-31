@@ -10,3 +10,5 @@ Esto con el fin de que no se pierdan los datos al apagar la API.
 Como dato extra cabe destacar que esta api fue desarrollada en 2 dias hábiles, generando como resultado una aplicación funcional del lado del back-end.
 
 Este readme fue escrito el 31/08/2021, quedando sujeto a futuros cambios.
+
+El repositorio del Front se encuentra en el siguiente link: https://github.com/Mondin0/trabajo_node_prueba_cli
