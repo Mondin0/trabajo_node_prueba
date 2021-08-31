@@ -1,10 +1,15 @@
 const { Router } = require('express');
 const router = Router();
 
-router.get('/test', (req, res)=>{
+router.post('/test', (req, res)=>{
+    const datos = JSON.stringify(req.body);
     const data = {
-        "Nombre": "Gabriel",
-        "Apellido": "Mondino"
+        "usuario": "abc",
+        "password": "123"
+    };
+    if (datos == data){
+        res.json(datos);
+        res.status(200).json({"status": "OK"});
     };
     res.json(data);
 })
